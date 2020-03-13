@@ -64,14 +64,8 @@ trait Huffman extends HuffmanInterface {
     }
     freqs.foldLeft[List[Leaf]](List.empty) { (acc, freq) => insert(freq, acc) }
   }
-  def singleton(trees: List[CodeTree]): Boolean = trees.size == 1
 
-  /*def combine(trees: List[CodeTree]): List[CodeTree] = trees match {
-    case l :: r :: rest =>
-      Fork(l, r, chars(l) ::: chars(r), weight(l) + weight(r)) :: rest
-    case single :: Nil => trees
-    case Nil           => trees
-  }*/
+  def singleton(trees: List[CodeTree]): Boolean = trees.size == 1
 
   def combine(trees: List[CodeTree]): List[CodeTree] = {
     def insert(tree: CodeTree, acc: List[CodeTree]): List[CodeTree] =
